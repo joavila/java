@@ -1,0 +1,1 @@
+./jdk8u292-b10/bin/javac -XDignore.symbol.file HelloWorld.java && ./jdk8u292-b10/bin/java HelloWorld
