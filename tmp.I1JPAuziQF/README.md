@@ -3,9 +3,11 @@
 <ul>
 <li>
 <p>Downloaded JDK from</p>
-```
+
+```bash
 wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz
 ```
+
 </li>
 <li>
 <p>Modify <i>/etc/resolv.conf</i> to resolve <i>www.nowayjose1.com</i> to a valid IP<p>
