@@ -26,7 +26,7 @@ class HelloWorld extends sun.net.NetworkClient {
 				}
 			}};
 		final ScheduledFuture<?> ret =
-			scheduler.scheduleAtFixedRate(beeper, 5, 3, SECONDS);
+			scheduler.scheduleAtFixedRate(beeper, 7, 3, SECONDS);
 		return ret;
 	}
 
