@@ -12,10 +12,11 @@ class HelloWorld extends sun.net.NetworkClient {
 
 	protected ScheduledFuture<?> dox() {
 		final Runnable beeper = new Runnable() {
+			String FQDN = System.getenv("FQDN") == null ? "www.nowayjose1.com" : System.getenv("FQDN");
 			public void run() {
 				LocalDateTime localDateTime = LocalDateTime.now();
 				LocalTime localTime = localDateTime.toLocalTime();
-				try (Socket s = nc.doConnect("www.nowayjose1.com", 80)) {
+				try (Socket s = nc.doConnect(FQDN, 80)) {
 					if(s.isConnected()) {
 						System.out.format("%s - %s%n", localTime, "OK");
 					} else {
