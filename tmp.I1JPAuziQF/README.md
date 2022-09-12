@@ -10,7 +10,7 @@ wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u29
 
 </li>
 <li>
-<p>Modify <i>/etc/resolv.conf</i> to resolve <i>www.nowayjose1.com</i> to a valid IP<p>
+<p>Modify <i>/etc/resolv.conf</i> to resolve <i>System.getenv("FQDN")</i> to a valid IP<p>
 </li>
 <li>
 <p>After running the application remove the entry from previous step in order to verify the code still will be able to resolve the name until the ttl has expired</p>
