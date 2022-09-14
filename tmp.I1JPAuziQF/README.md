@@ -1,5 +1,6 @@
-<h1></h1>
+<h1>
 <p>Tests <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/net/properties.html#nct">networkaddress.cache.ttl</a></p>
+</h1>
 <ul>
 <li>
 <p>Downloaded JDK from</p>
@@ -15,4 +16,33 @@ wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u29
 <li>
 <p>After running the application remove the entry from previous step in order to verify the code still will be able to resolve the name until the ttl has expired</p>
 </li>
+<li>
+<table>
+<tr>
+<th>
+Environemental variable
+</th>
+<th>
+Usage
+</th>
+</tr>
+<tr>
+<td>
+DESTINATION_FQDN
+</td>
+<td>Defines destination FQDN. <i>www.nowayjose1.com</i> otherwise.
+</tr>
+<tr>
+<td>
+DESTINATION_PORT
+</td>
+<td>Defines destination PORT. <i>80</i> otherwise.
+</tr>
+<tr>
+<td>
+TTL
+</td>
+<td>Defines <i>networkaddress.cache.ttl</i>. <i>120</i> otherwise.
+</tr>
+</table>
 </ul>

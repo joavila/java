@@ -12,11 +12,12 @@ class HelloWorld extends sun.net.NetworkClient {
 
 	protected ScheduledFuture<?> dox() {
 		final Runnable beeper = new Runnable() {
-			String FQDN = System.getenv("FQDN") == null ? "www.nowayjose1.com" : System.getenv("FQDN");
+			final String FQDN = System.getenv("DESTINATION_FQDN") == null ? "www.nowayjose1.com" : System.getenv("DESTINATION_FQDN");
+			final int PORT = Integer.parseInt(System.getenv("DESTINATION_PORT") == null ? "80" : System.getenv("DESTINATION_PORT"));
 			public void run() {
 				LocalDateTime localDateTime = LocalDateTime.now();
 				LocalTime localTime = localDateTime.toLocalTime();
-				try (Socket s = nc.doConnect(FQDN, 80)) {
+				try (Socket s = nc.doConnect(FQDN, PORT)) {
 					if(s.isConnected()) {
 						System.out.format("%s - %s%n", localTime, "OK");
 					} else {
@@ -32,7 +33,8 @@ class HelloWorld extends sun.net.NetworkClient {
 	}
 
 	public static void main( String ... args) throws Exception {
-		//java.security.Security.setProperty("networkaddress.cache.ttl" , "120");
+		final String TTL = System.getenv("TTL") == null ? "120" : System.getenv("TTL");
+		java.security.Security.setProperty("networkaddress.cache.ttl" , TTL);
 		//java.security.Security.setProperty("networkaddress.cache.negative.ttl" , "0");
 		nc.dox().get();
 	}
