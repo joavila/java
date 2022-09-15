@@ -60,7 +60,7 @@ INITIAL_DELAY_SECONDS
 <td>
 PERIOD_SECONDS
 </td>
-<td>Defines <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ScheduledExecutorService.html#scheduleAtFixedRate-java.lang.Runnable-long-long-java.util.concurrent.TimeUnit-">period</a>. <i>0</i> otherwise.
+<td>Defines <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ScheduledExecutorService.html#scheduleAtFixedRate-java.lang.Runnable-long-long-java.util.concurrent.TimeUnit-">period</a>. <i>3</i> otherwise.
 </tr>
 </table>
 </ul>
