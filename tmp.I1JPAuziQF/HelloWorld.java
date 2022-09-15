@@ -27,15 +27,18 @@ class HelloWorld extends sun.net.NetworkClient {
 					System.err.format("%s - %s%n", localTime, ex);
 				}
 			}};
+		final int INITIAL_DELAY_SECONDS = Integer.parseInt(System.getenv("INITIAL_DELAY_SECONDS") == null ? "7" : System.getenv("INITIAL_DELAY_SECONDS"));
+		final int PERIOD_SECONDS = Integer.parseInt(System.getenv("PERIOD_SECONDS") == null ? "3" : System.getenv("PERIOD_SECONDS"));
 		final ScheduledFuture<?> ret =
-			scheduler.scheduleAtFixedRate(beeper, 7, 3, SECONDS);
+			scheduler.scheduleAtFixedRate(beeper, INITIAL_DELAY_SECONDS, PERIOD_SECONDS, SECONDS);
 		return ret;
 	}
 
 	public static void main( String ... args) throws Exception {
 		final String TTL = System.getenv("TTL") == null ? "120" : System.getenv("TTL");
 		java.security.Security.setProperty("networkaddress.cache.ttl" , TTL);
-		//java.security.Security.setProperty("networkaddress.cache.negative.ttl" , "0");
+		final String NEGATIVE_TTL = System.getenv("NEGATIVE_TTL") == null ? "0" : System.getenv("NEGATIVE_TTL");
+		java.security.Security.setProperty("networkaddress.cache.negative.ttl" , NEGATIVE_TTL);
 		nc.dox().get();
 	}
 }

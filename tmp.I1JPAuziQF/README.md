@@ -44,5 +44,23 @@ TTL
 </td>
 <td>Defines <i>networkaddress.cache.ttl</i>. <i>120</i> otherwise.
 </tr>
+<tr>
+<td>
+NEGATIVE_TTL
+</td>
+<td>Defines <i>networkaddress.cache.negative.ttl</i>. <i>0</i> otherwise.
+</tr>
+<tr>
+<td>
+INITIAL_DELAY_SECONDS
+</td>
+<td>Defines <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ScheduledExecutorService.html#scheduleAtFixedRate-java.lang.Runnable-long-long-java.util.concurrent.TimeUnit-">initialDelay</a>. <i>7</i> otherwise.
+</tr>
+<tr>
+<td>
+PERIOD_SECONDS
+</td>
+<td>Defines <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ScheduledExecutorService.html#scheduleAtFixedRate-java.lang.Runnable-long-long-java.util.concurrent.TimeUnit-">period</a>. <i>0</i> otherwise.
+</tr>
 </table>
 </ul>
