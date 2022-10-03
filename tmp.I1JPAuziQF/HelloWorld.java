@@ -2,6 +2,7 @@ import java.net.Socket;
 import java.util.concurrent.*;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import static java.util.concurrent.TimeUnit.*;
 
 class HelloWorld extends sun.net.NetworkClient {
@@ -9,22 +10,24 @@ class HelloWorld extends sun.net.NetworkClient {
 		Executors.newScheduledThreadPool(1);
 
 	private static final HelloWorld nc = new HelloWorld();
+	
+	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 	protected ScheduledFuture<?> dox() {
 		final Runnable beeper = new Runnable() {
 			final String FQDN = System.getenv("DESTINATION_FQDN") == null ? "www.nowayjose1.com" : System.getenv("DESTINATION_FQDN");
 			final int PORT = Integer.parseInt(System.getenv("DESTINATION_PORT") == null ? "80" : System.getenv("DESTINATION_PORT"));
 			public void run() {
-				LocalDateTime localDateTime = LocalDateTime.now();
-				LocalTime localTime = localDateTime.toLocalTime();
 				try (Socket s = nc.doConnect(FQDN, PORT)) {
+					LocalDateTime localDateTime = LocalDateTime.now();
 					if(s.isConnected()) {
-						System.out.format("%s - %s%n", localTime, "OK");
+						System.out.format("%s - %s%n", localDateTime.format(FORMATTER), "OK");
 					} else {
-						System.err.format("%s - %s%n", localTime, "NOK");
+						System.err.format("%s - %s%n", localDateTime.format(FORMATTER), "NOK");
 					}
 				} catch (Exception ex) {
-					System.err.format("%s - %s%n", localTime, ex);
+					LocalDateTime localDateTime = LocalDateTime.now();
+					System.err.format("%s - %s%n", localDateTime.format(FORMATTER), ex);
 				}
 			}};
 		final int INITIAL_DELAY_SECONDS = Integer.parseInt(System.getenv("INITIAL_DELAY_SECONDS") == null ? "7" : System.getenv("INITIAL_DELAY_SECONDS"));
