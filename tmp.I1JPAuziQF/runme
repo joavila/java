@@ -1,1 +1,11 @@
+#!/bin/bash -
+
+trap ctrl_c INT
+
+function ctrl_c() {
+  kill $PID
+}
+
+./jdk8u292-b10/bin/java sun.net.NetworkServer &
+PID=$!
 ./jdk8u292-b10/bin/javac -XDignore.symbol.file HelloWorld.java && ./jdk8u292-b10/bin/java HelloWorld
