@@ -15,15 +15,15 @@ class HelloWorld extends sun.net.NetworkClient {
 
 	protected ScheduledFuture<?> dox() {
 		final Runnable beeper = new Runnable() {
-			final String FQDN = System.getenv("DESTINATION_FQDN") == null ? "www.nowayjose1.com" : System.getenv("DESTINATION_FQDN");
-			final int PORT = Integer.parseInt(System.getenv("DESTINATION_PORT") == null ? "80" : System.getenv("DESTINATION_PORT"));
+			final String FQDN = System.getenv("DESTINATION_FQDN") == null ? "localhost" : System.getenv("DESTINATION_FQDN");
+			final int PORT = Integer.parseInt(System.getenv("DESTINATION_PORT") == null ? "8888" : System.getenv("DESTINATION_PORT"));
 			public void run() {
 				try (Socket s = nc.doConnect(FQDN, PORT)) {
 					LocalDateTime localDateTime = LocalDateTime.now();
 					if(s.isConnected()) {
-						System.out.format("%s - %s%n", localDateTime.format(FORMATTER), "OK");
+						System.out.format("%s - Resolved %s and connected through port %d OK%n", localDateTime.format(FORMATTER), FQDN, PORT);
 					} else {
-						System.err.format("%s - %s%n", localDateTime.format(FORMATTER), "NOK");
+						System.err.format("%s - Failed to connect to %s through port %d%n", localDateTime.format(FORMATTER), FQDN, PORT);
 					}
 				} catch (Exception ex) {
 					LocalDateTime localDateTime = LocalDateTime.now();
