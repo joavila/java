@@ -21,13 +21,13 @@ class HelloWorld extends sun.net.NetworkClient {
 				try (Socket s = nc.doConnect(FQDN, PORT)) {
 					LocalDateTime localDateTime = LocalDateTime.now();
 					if(s.isConnected()) {
-						System.out.format("%s - Resolved %s and connected through port %d OK%n", localDateTime.format(FORMATTER), FQDN, PORT);
+						System.out.format("%s - Resolved %s and connected through port %d%n", localDateTime.format(FORMATTER), FQDN, PORT);
 					} else {
 						System.err.format("%s - Failed to connect to %s through port %d%n", localDateTime.format(FORMATTER), FQDN, PORT);
 					}
 				} catch (Exception ex) {
 					LocalDateTime localDateTime = LocalDateTime.now();
-					System.err.format("%s - %s%n", localDateTime.format(FORMATTER), ex);
+					System.err.format("%s - Unexpected exception: %s%n", localDateTime.format(FORMATTER), ex);
 				}
 			}};
 		final int INITIAL_DELAY_SECONDS = Integer.parseInt(System.getenv("INITIAL_DELAY_SECONDS") == null ? "7" : System.getenv("INITIAL_DELAY_SECONDS"));
