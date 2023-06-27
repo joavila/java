@@ -30,13 +30,13 @@ Usage
 <td>
 DESTINATION_FQDN
 </td>
-<td>Defines destination FQDN. <i>www.nowayjose1.com</i> otherwise.
+<td>Defines destination FQDN. <i>localhost</i> otherwise.
 </tr>
 <tr>
 <td>
 DESTINATION_PORT
 </td>
-<td>Defines destination PORT. <i>80</i> otherwise.
+<td>Defines destination PORT. <i>8888</i> otherwise.
 </tr>
 <tr>
 <td>
